@@ -93,6 +93,17 @@ public class FishController : MonoBehaviour
                 }
             }
 
+            if (collider.gameObject.tag == "NPC")
+            {
+                collider.GetComponent<Rigidbody2D>().AddForce(GetComponentInParent<PlayerController>().GetDirection() * fishKnockback, ForceMode2D.Impulse);
+                collider.GetComponent<Rigidbody2D>().AddForce(collider.transform.up * fishJumpback, ForceMode2D.Impulse);
+                int slapIndex = Random.Range(0, slapSounds.Length);
+                AudioSource.PlayClipAtPoint(slapSounds[slapIndex], transform.position);
+
+                return;
+
+            }
+
         }
 
        
