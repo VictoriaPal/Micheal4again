@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class FishController : MonoBehaviour
 {
@@ -96,5 +97,15 @@ public class FishController : MonoBehaviour
 
        
     }
-    
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+
+        if (collision.gameObject.tag == "kill")
+        {
+
+            SceneManager.LoadScene("Game", LoadSceneMode.Single);
+        }
+    }
+
 }
